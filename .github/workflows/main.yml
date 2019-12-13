@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  get-current-branch-job:
+    runs-on: ubuntu-latest
+    name: Test action
+    steps:
+    - name: Use action
+      id: get-branch
+      uses: ypicard/get-branch-name-github-action@v1
+    - name: Echo outpus
+      run: echo "name=${{ steps.get-branch.outputs.branch }} - tag=${{ steps.get-branch.outputs.tag }}"
