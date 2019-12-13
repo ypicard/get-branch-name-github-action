@@ -1,0 +1,17 @@
+on: [push]
+
+jobs:
+  get-current-branch-job:
+    runs-on: ubuntu-latest
+    name: Test job
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - uses: ./ # Uses an action in the root directory
+    - name: Get current branch name
+      id: get-branch
+      uses: ypicard/get-branch-name-github-action@master
+    - name: Echo current branch name
+      run: echo "Current branch name is <${{ steps.get-branch.outputs.branch }}>"
+    - name: Echo current branch tag
+      run: echo "Current branch tag is <${{ steps.get-branch.outputs.tag }}>"

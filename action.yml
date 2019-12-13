@@ -1,0 +1,14 @@
+# action.yml
+name: 'Get Branch Name and Tag'
+description: 'Get current branch name and corresponding branch tag if needed.'
+branding:
+    icon: 'activity'  
+    color: 'white'
+outputs:
+  branch:
+    description: 'Current branch name'
+  tag:
+    description: 'Corresponding branch tag'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
