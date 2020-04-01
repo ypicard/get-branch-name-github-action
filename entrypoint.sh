@@ -8,7 +8,7 @@ TAG=${TAGS_MAP[$BRANCH]}
 
 # if contains /refs/tags/
 if [ $(echo ${GITHUB_REF} | sed -e "s/refs\/tags\///g") != ${GITHUB_REF} ]; then
-  TAG="latest"
+  TAG=$(echo ${GITHUB_REF} | sed -e "s/refs\/heads\///g")
 fi;
 
 echo "::set-output name=branch::${BRANCH}"
